@@ -11,6 +11,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class OreItem extends Item {
 
+	public static int iron = 0;
+	public static int gold = 1;
 	public static String[] itemNames = new String[] { "IronOre", "GoldOre" };
 	public static String[] itemDisplayNames = new String[] { "Raw Iron Ore", "Raw Gold Ore" };
 	

@@ -1,6 +1,9 @@
 package bstramke.OresDropMores2;
 
 import net.minecraft.block.Block;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.Configuration;
 import bstramke.OresDropMores2.Blocks.OresDropMoresBlocks;
 import bstramke.OresDropMores2.Common.CommonProxy;
@@ -40,6 +43,10 @@ public class OresDropMores2 extends DummyModContainer {
 		OreItemId = config.getItem(Configuration.CATEGORY_ITEM, "OreItemId", 5400).getInt();
 
 		config.save();
+		
+		Block.blocksList[14] = null;
+		Block.blocksList[15] = null;
+		
 	}
 
 	@Init
@@ -54,7 +61,8 @@ public class OresDropMores2 extends DummyModContainer {
 	}
 
 	private void initRecipes() {
-
+		FurnaceRecipes.smelting().addSmelting(OresDropMoresItems.OreItem.itemID, OreItem.iron, new ItemStack(Item.ingotIron), 0.7F);
+		FurnaceRecipes.smelting().addSmelting(OresDropMoresItems.OreItem.itemID, OreItem.gold, new ItemStack(Item.ingotGold), 1.0F);
 	}
 
 	private void initLanguageRegistry() {
