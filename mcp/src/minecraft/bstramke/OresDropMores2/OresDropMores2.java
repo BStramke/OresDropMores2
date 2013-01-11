@@ -33,6 +33,16 @@ public class OresDropMores2 extends DummyModContainer {
 	public static CommonProxy proxy;
 
 	public static int OreItemId;
+	public static int IronOreHarvestXPMin;
+	public static int IronOreHarvestXPMax;
+	public static int IronOreDropMin;
+	public static int IronOreDropMax;
+	protected static float IronOreSmeltXP;
+	public static int GoldOreHarvestXPMin;
+	public static int GoldOreHarvestXPMax;
+	protected static float GoldOreSmeltXP;
+	public static int GoldOreDropMin;
+	public static int GoldOreDropMax;
 
 	@PreInit
 	public void PreLoad(FMLPreInitializationEvent event) {
@@ -41,12 +51,23 @@ public class OresDropMores2 extends DummyModContainer {
 		config.load();
 
 		OreItemId = config.getItem(Configuration.CATEGORY_ITEM, "OreItemId", 5400).getInt();
+		
+		IronOreHarvestXPMin = config.get(Configuration.CATEGORY_GENERAL, "IronOre Harvest XP", 1).getInt(1);
+		IronOreHarvestXPMax = config.get(Configuration.CATEGORY_GENERAL, "IronOre Harvest XP", 1).getInt(1);
+		IronOreDropMin = config.get(Configuration.CATEGORY_GENERAL, "IronOre Harvest DropCount Minimum", 3).getInt(3);
+		IronOreDropMax = config.get(Configuration.CATEGORY_GENERAL, "IronOre Harvest DropCount Maximum", 5).getInt(5);
+		IronOreSmeltXP = (float) config.get(Configuration.CATEGORY_GENERAL, "IronOre Smelt XP", 0.1F).getDouble(0.1F);
+		
+		GoldOreHarvestXPMin = config.get(Configuration.CATEGORY_GENERAL, "GoldOre Harvest XP Minimum", 1).getInt(1);
+		GoldOreHarvestXPMax = config.get(Configuration.CATEGORY_GENERAL, "GoldOre Harvest XP Maximum", 1).getInt(1);
+		GoldOreDropMin = config.get(Configuration.CATEGORY_GENERAL, "IronOre Harvest DropCount Minimum", 3).getInt(3);
+		GoldOreDropMax = config.get(Configuration.CATEGORY_GENERAL, "IronOre Harvest DropCount Maximum", 5).getInt(5);
+		GoldOreSmeltXP = (float) config.get(Configuration.CATEGORY_GENERAL, "GoldOre Smelt XP", 0.2F).getDouble(0.2F);
 
 		config.save();
 		
 		Block.blocksList[14] = null;
 		Block.blocksList[15] = null;
-		
 	}
 
 	@Init
@@ -61,8 +82,8 @@ public class OresDropMores2 extends DummyModContainer {
 	}
 
 	private void initRecipes() {
-		FurnaceRecipes.smelting().addSmelting(OresDropMoresItems.OreItem.itemID, OreItem.iron, new ItemStack(Item.ingotIron), 0.7F);
-		FurnaceRecipes.smelting().addSmelting(OresDropMoresItems.OreItem.itemID, OreItem.gold, new ItemStack(Item.ingotGold), 1.0F);
+		FurnaceRecipes.smelting().addSmelting(OresDropMoresItems.OreItem.itemID, OreItem.iron, new ItemStack(Item.ingotIron), IronOreSmeltXP);
+		FurnaceRecipes.smelting().addSmelting(OresDropMoresItems.OreItem.itemID, OreItem.gold, new ItemStack(Item.ingotGold), GoldOreSmeltXP);
 	}
 
 	private void initLanguageRegistry() {
