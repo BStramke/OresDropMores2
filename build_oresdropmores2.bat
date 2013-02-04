@@ -2,9 +2,9 @@
 cd mcp
 mkdir reobf\minecraft\bstramke\OresDropMores2Base
 mkdir reobf\minecraft\bstramke\OresDropMores2Base\bstramke
-mkdir reobf\minecraft\bstramke\OresDropMores2Base\buildcraft
-mkdir reobf\minecraft\bstramke\OresDropMores2Base\buildcraft\api
-mkdir reobf\minecraft\bstramke\OresDropMores2Base\buildcraft\api\inventory
+rem mkdir reobf\minecraft\bstramke\OresDropMores2Base\buildcraft
+rem mkdir reobf\minecraft\bstramke\OresDropMores2Base\buildcraft\api
+rem mkdir reobf\minecraft\bstramke\OresDropMores2Base\buildcraft\api\inventory
 move reobf\minecraft\bstramke\OresDropMores2 reobf\minecraft\bstramke\OresDropMores2Base\bstramke
 move reobf\minecraft\bstramke\OresDropMores2NEIPlugin reobf\minecraft\bstramke\OresDropMores2Base\bstramke
 
@@ -12,8 +12,9 @@ mkdir reobf\minecraft\bstramke\OresDropMores2Base\bstramke\OresDropMores2\resour
 mkdir reobf\minecraft\bstramke\OresDropMores2Base\bstramke\OresDropMores2\resources\textures
 mkdir reobf\minecraft\bstramke\OresDropMores2Base\bstramke\OresDropMores2\resources\textures\gui
 
+xcopy reobf\minecraft\forestry reobf\minecraft\bstramke\OresDropMores2Base\forestry\ /S
 
-copy reobf\minecraft\buildcraft\api\inventory\* reobf\minecraft\bstramke\OresDropMores2Base\buildcraft\api\inventory
+rem copy reobf\minecraft\buildcraft\api\inventory\* reobf\minecraft\bstramke\OresDropMores2Base\buildcraft\api\inventory
 copy src\minecraft\bstramke\OresDropMores2\mcmod.info reobf\minecraft\bstramke\OresDropMores2Base\mcmod.info
 copy src\minecraft\bstramke\OresDropMores2\resources\* reobf\minecraft\bstramke\OresDropMores2Base\bstramke\OresDropMores2\resources
 copy src\minecraft\bstramke\OresDropMores2\resources\textures\* reobf\minecraft\bstramke\OresDropMores2Base\bstramke\OresDropMores2\resources\textures
