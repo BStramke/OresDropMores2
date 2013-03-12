@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.oredict.OreDictionary;
 import bstramke.OresDropMores2.Blocks.OresDropMoresBlocks;
 import bstramke.OresDropMores2.Common.CommonProxy;
 import bstramke.OresDropMores2.Items.OreItem;
@@ -70,7 +71,7 @@ public class OresDropMores2 extends DummyModContainer {
 	public static int RedstoneOreDropMin;
 	public static int RedstoneOreDropMax;
 
-	private static boolean ReduceToolRequirements;
+	public static boolean ReduceToolRequirements;
 
 	@PreInit
 	public void PreLoad(FMLPreInitializationEvent event) {
@@ -120,15 +121,6 @@ public class OresDropMores2 extends DummyModContainer {
 		ReduceToolRequirements = config.get(Configuration.CATEGORY_GENERAL, "Reduce Tool Requirement for Gathering", true).getBoolean(true);
 
 		config.save();
-
-		Block.blocksList[14] = null;
-		Block.blocksList[15] = null;
-		Block.blocksList[16] = null;
-		Block.blocksList[21] = null;
-		Block.blocksList[56] = null;
-		Block.blocksList[73] = null;
-		Block.blocksList[74] = null;
-		Block.blocksList[129] = null;
 	}
 
 	@Init
@@ -137,27 +129,10 @@ public class OresDropMores2 extends DummyModContainer {
 		initRecipes();
 		initLanguageRegistry();
 		proxy.registerRenderThings();
-
-		Block.blocksList[14] = OresDropMoresBlocks.odmOreGoldBlock;
-		Block.blocksList[15] = OresDropMoresBlocks.odmOreIronBlock;
-		Block.blocksList[16] = OresDropMoresBlocks.odmOreCoalBlock;
-		Block.blocksList[21] = OresDropMoresBlocks.odmOreLapisBlock;
-		Block.blocksList[56] = OresDropMoresBlocks.odmOreDiamondBlock;
-		Block.blocksList[73] = OresDropMoresBlocks.odmOreRedstoneBlock;
-		Block.blocksList[74] = OresDropMoresBlocks.odmOreRedstoneBlockGlowing;
-		Block.blocksList[129] = OresDropMoresBlocks.odmOreEmeraldBlock;
-
-		if (ReduceToolRequirements) {
-			MinecraftForge.setBlockHarvestLevel(OresDropMoresBlocks.odmOreGoldBlock, "pickaxe", 1);
-			MinecraftForge.setBlockHarvestLevel(OresDropMoresBlocks.odmOreIronBlock, "pickaxe", 0);
-			MinecraftForge.setBlockHarvestLevel(OresDropMoresBlocks.odmOreDiamondBlock, "pickaxe", 1);
-			MinecraftForge.setBlockHarvestLevel(OresDropMoresBlocks.odmOreEmeraldBlock, "pickaxe", 1);
-			MinecraftForge.setBlockHarvestLevel(OresDropMoresBlocks.odmOreRedstoneBlock, "pickaxe", 1);
-			MinecraftForge.setBlockHarvestLevel(OresDropMoresBlocks.odmOreRedstoneBlockGlowing, "pickaxe", 1);
-			MinecraftForge.setBlockHarvestLevel(Block.obsidian, "pickaxe", 2);
-		}
+		
+		OresDropMoresBlocks.Init();
 	}
-
+	
 	private void initRecipes() {
 		FurnaceRecipes.smelting().addSmelting(OresDropMoresItems.OreItem.itemID, OreItem.iron, new ItemStack(Item.ingotIron), IronOreSmeltXP);
 		FurnaceRecipes.smelting().addSmelting(OresDropMoresItems.OreItem.itemID, OreItem.gold, new ItemStack(Item.ingotGold), GoldOreSmeltXP);
@@ -168,7 +143,6 @@ public class OresDropMores2 extends DummyModContainer {
 			LanguageRegistry.instance().addStringLocalization("item.OresDropMoresOreItem." + ((OreItem) OresDropMoresItems.OreItem).itemNames[i] + ".name",
 					((OreItem) OresDropMoresItems.OreItem).itemDisplayNames[i]);
 		}
-
 	}
 
 	@PostInit
