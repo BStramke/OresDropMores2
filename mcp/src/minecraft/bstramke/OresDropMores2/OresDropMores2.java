@@ -123,7 +123,7 @@ public class OresDropMores2 extends DummyModContainer {
 		RedstoneOreDropMin = config.get(Configuration.CATEGORY_GENERAL, "Redstone Harvest DropCount Minimum", 4).getInt(4);
 		RedstoneOreDropMax = config.get(Configuration.CATEGORY_GENERAL, "Redstone Harvest DropCount Maximum", 5).getInt(5);
 		
-		NetherQuartzOreHarvestXPMin = config.get(Configuration.CATEGORY_GENERAL, "NetherQuartz Harvest XP Minimum", 1).getInt(1);
+		NetherQuartzOreHarvestXPMin = config.get(Configuration.CATEGORY_GENERAL, "NetherQuartz Harvest XP Minimum", 2).getInt(2);
 		NetherQuartzOreHarvestXPMax = config.get(Configuration.CATEGORY_GENERAL, "NetherQuartz Harvest XP Maximum", 5).getInt(5);
 		NetherQuartzOreDropMin = config.get(Configuration.CATEGORY_GENERAL, "NetherQuartz Harvest DropCount Minimum", 4).getInt(4);
 		NetherQuartzOreDropMax = config.get(Configuration.CATEGORY_GENERAL, "NetherQuartz Harvest DropCount Maximum", 9).getInt(9);
