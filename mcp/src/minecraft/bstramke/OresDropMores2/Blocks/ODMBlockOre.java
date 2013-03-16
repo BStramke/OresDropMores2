@@ -9,9 +9,8 @@ import bstramke.OresDropMores2.Items.OresDropMoresItems;
 
 public class ODMBlockOre extends BlockOre {
 
-	public ODMBlockOre(int par1, int par2) {
-		super(par1, par2);
-		// TODO Auto-generated constructor stub
+	public ODMBlockOre(int par1) {
+		super(par1);
 	}
 	
 	@Override

@@ -10,8 +10,8 @@ import bstramke.OresDropMores2.Items.OresDropMoresItems;
 
 public class ODMOreGoldBlock extends ODMBlockOre {
 
-	public ODMOreGoldBlock(int par1, int par2) {
-		super(par1, par2);
+	public ODMOreGoldBlock(int par1) {
+		super(par1);
 	}
 
 	public int damageDropped(int par1) {

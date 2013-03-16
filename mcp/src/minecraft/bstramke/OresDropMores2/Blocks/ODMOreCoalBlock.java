@@ -8,8 +8,8 @@ import bstramke.OresDropMores2.OresDropMores2;
 
 public class ODMOreCoalBlock extends ODMBlockOreDrop {
 
-	public ODMOreCoalBlock(int par1, int par2) {
-		super(par1, par2);
+	public ODMOreCoalBlock(int par1) {
+		super(par1);
 	}
 	
 	@Override

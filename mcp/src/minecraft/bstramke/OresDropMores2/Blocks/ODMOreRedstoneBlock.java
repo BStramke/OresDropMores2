@@ -9,8 +9,8 @@ import net.minecraft.world.World;
 
 public class ODMOreRedstoneBlock extends BlockRedstoneOre {
 
-	public ODMOreRedstoneBlock(int par1, int par2, boolean par3) {
-		super(par1, par2, par3);
+	public ODMOreRedstoneBlock(int par1, boolean par3) {
+		super(par1, par3);
 	}
 
 	@Override

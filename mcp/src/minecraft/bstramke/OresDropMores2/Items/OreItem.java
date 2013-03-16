@@ -2,10 +2,11 @@ package bstramke.OresDropMores2.Items;
 
 import java.util.List;
 
+import net.minecraft.client.renderer.texture.IconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import bstramke.OresDropMores2.Common.CommonProxy;
+import net.minecraft.util.Icon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -15,6 +16,7 @@ public class OreItem extends Item {
 	public static int gold = 1;
 	public static String[] itemNames = new String[] { "IronOre", "GoldOre" };
 	public static String[] itemDisplayNames = new String[] { "Raw Iron Ore", "Raw Gold Ore" };
+	private Icon icoGoldOre;
 	
 	public OreItem(int par1) {
 		super(par1);
@@ -24,13 +26,18 @@ public class OreItem extends Item {
 	}
 	
 	@Override
-	public String getTextureFile() {
-		return CommonProxy.ITEMS_PNG;
+	public void func_94581_a(IconRegister iconRegister)
+	{
+		iconIndex = iconRegister.func_94245_a("OresDropMores2:IronOre");
+		icoGoldOre = iconRegister.func_94245_a("OresDropMores2:GoldOre");
 	}
 
 	@Override
-	public int getIconFromDamage(int par1) {
-		return this.iconIndex + par1;
+	public Icon getIconFromDamage(int par1) {
+		if(par1 == iron)
+			return iconIndex;
+		else
+			return icoGoldOre;
 	}
 
 	public static int getMetadataSize() {
@@ -38,14 +45,11 @@ public class OreItem extends Item {
 	}
 
 	@Override
-	public String getItemNameIS(ItemStack is) {
-		String name = "";
+	public String getItemDisplayName(ItemStack is) {
 		if (is.getItemDamage() < getMetadataSize() && is.getItemDamage() >= 0)
-			name = itemNames[is.getItemDamage()];
+			return itemNames[is.getItemDamage()];
 		else
-			name = itemNames[0];
-
-		return getItemName() + "." + name;
+			return itemNames[0];
 	}
 
 	@SideOnly(Side.CLIENT)

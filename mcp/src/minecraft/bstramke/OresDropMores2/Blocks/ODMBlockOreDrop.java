@@ -6,8 +6,8 @@ import net.minecraft.block.BlockOre;
 
 public class ODMBlockOreDrop extends BlockOre {
 
-	public ODMBlockOreDrop(int par1, int par2) {
-		super(par1, par2);
+	public ODMBlockOreDrop(int par1) {
+		super(par1);
 	}
 
 	@Override

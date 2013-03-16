@@ -25,7 +25,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(name = "OresDropMores2", version = "0.3", modid = "OresDropMores2")
+@Mod(name = "OresDropMores2", version = "0.4", modid = "OresDropMores2")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class OresDropMores2 extends DummyModContainer {
 	@Instance
@@ -70,6 +70,11 @@ public class OresDropMores2 extends DummyModContainer {
 	public static int RedstoneOreHarvestXPMax;
 	public static int RedstoneOreDropMin;
 	public static int RedstoneOreDropMax;
+	
+	public static int NetherQuartzOreHarvestXPMin;
+	public static int NetherQuartzOreHarvestXPMax;
+	public static int NetherQuartzOreDropMin;
+	public static int NetherQuartzOreDropMax;
 
 	public static boolean ReduceToolRequirements;
 
@@ -118,6 +123,11 @@ public class OresDropMores2 extends DummyModContainer {
 		RedstoneOreDropMin = config.get(Configuration.CATEGORY_GENERAL, "Redstone Harvest DropCount Minimum", 4).getInt(4);
 		RedstoneOreDropMax = config.get(Configuration.CATEGORY_GENERAL, "Redstone Harvest DropCount Maximum", 5).getInt(5);
 		
+		NetherQuartzOreHarvestXPMin = config.get(Configuration.CATEGORY_GENERAL, "NetherQuartz Harvest XP Minimum", 1).getInt(1);
+		NetherQuartzOreHarvestXPMax = config.get(Configuration.CATEGORY_GENERAL, "NetherQuartz Harvest XP Maximum", 5).getInt(5);
+		NetherQuartzOreDropMin = config.get(Configuration.CATEGORY_GENERAL, "NetherQuartz Harvest DropCount Minimum", 4).getInt(4);
+		NetherQuartzOreDropMax = config.get(Configuration.CATEGORY_GENERAL, "NetherQuartz Harvest DropCount Maximum", 9).getInt(9);
+		
 		ReduceToolRequirements = config.get(Configuration.CATEGORY_GENERAL, "Reduce Tool Requirement for Gathering", true).getBoolean(true);
 
 		config.save();
@@ -127,7 +137,6 @@ public class OresDropMores2 extends DummyModContainer {
 	public void load(FMLInitializationEvent event) {
 
 		initRecipes();
-		initLanguageRegistry();
 		proxy.registerRenderThings();
 		
 		OresDropMoresBlocks.Init();
@@ -136,13 +145,6 @@ public class OresDropMores2 extends DummyModContainer {
 	private void initRecipes() {
 		FurnaceRecipes.smelting().addSmelting(OresDropMoresItems.OreItem.itemID, OreItem.iron, new ItemStack(Item.ingotIron), IronOreSmeltXP);
 		FurnaceRecipes.smelting().addSmelting(OresDropMoresItems.OreItem.itemID, OreItem.gold, new ItemStack(Item.ingotGold), GoldOreSmeltXP);
-	}
-
-	private void initLanguageRegistry() {
-		for (int i = 0; i < ((OreItem) OresDropMoresItems.OreItem).getMetadataSize(); i++) {
-			LanguageRegistry.instance().addStringLocalization("item.OresDropMoresOreItem." + ((OreItem) OresDropMoresItems.OreItem).itemNames[i] + ".name",
-					((OreItem) OresDropMoresItems.OreItem).itemDisplayNames[i]);
-		}
 	}
 
 	@PostInit

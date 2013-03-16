@@ -5,6 +5,6 @@ import bstramke.OresDropMores2.OresDropMores2;
 
 public class OresDropMoresItems {
 
-	public static final Item OreItem = new OreItem(OresDropMores2.OreItemId).setItemName("OresDropMoresOreItem").setIconCoord(0, 0);
+	public static final Item OreItem = new OreItem(OresDropMores2.OreItemId).setUnlocalizedName("OresDropMoresOreItem");
 
 }
