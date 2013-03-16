@@ -47,9 +47,9 @@ public class OreItem extends Item {
 	@Override
 	public String getItemDisplayName(ItemStack is) {
 		if (is.getItemDamage() < getMetadataSize() && is.getItemDamage() >= 0)
-			return itemNames[is.getItemDamage()];
+			return itemDisplayNames[is.getItemDamage()];
 		else
-			return itemNames[0];
+			return itemDisplayNames[0];
 	}
 
 	@SideOnly(Side.CLIENT)
