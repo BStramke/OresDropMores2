@@ -9,7 +9,7 @@ rem mkdir reobf\minecraft\bstramke\OresDropMores2Base\bstramke\OresDropMores2\te
 rem mkdir reobf\minecraft\bstramke\OresDropMores2Base\bstramke\OresDropMores2\textures\icons
 
 xcopy reobf\minecraft\forestry reobf\minecraft\bstramke\OresDropMores2Base\forestry\ /S
-xcopy src\minecraft\bstramke\OresDropMores2\textures reobf\minecraft\bstramke\OresDropMores2Base\textures\ /S
+xcopy src\minecraft\bstramke\OresDropMores2\mods reobf\minecraft\bstramke\OresDropMores2Base\mods\ /S
 
 copy src\minecraft\bstramke\OresDropMores2\mcmod.info reobf\minecraft\bstramke\OresDropMores2Base\mcmod.info
 rem copy src\minecraft\bstramke\OresDropMores2\resources\* reobf\minecraft\bstramke\OresDropMores2Base\bstramke\OresDropMores2\resources
