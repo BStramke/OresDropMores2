@@ -75,6 +75,11 @@ public class OresDropMores2 extends DummyModContainer {
 	public static int NetherQuartzOreHarvestXPMax;
 	public static int NetherQuartzOreDropMin;
 	public static int NetherQuartzOreDropMax;
+	
+	public static int GlowstoneOreHarvestXPMin;
+	public static int GlowstoneOreHarvestXPMax;
+	public static int GlowstoneOreDropMin;
+	public static int GlowstoneOreDropMax;
 
 	public static boolean ReduceToolRequirements;
 
@@ -127,6 +132,11 @@ public class OresDropMores2 extends DummyModContainer {
 		NetherQuartzOreHarvestXPMax = config.get(Configuration.CATEGORY_GENERAL, "NetherQuartz Harvest XP Maximum", 5).getInt(5);
 		NetherQuartzOreDropMin = config.get(Configuration.CATEGORY_GENERAL, "NetherQuartz Harvest DropCount Minimum", 4).getInt(4);
 		NetherQuartzOreDropMax = config.get(Configuration.CATEGORY_GENERAL, "NetherQuartz Harvest DropCount Maximum", 9).getInt(9);
+
+		GlowstoneOreHarvestXPMin = config.get(Configuration.CATEGORY_GENERAL, "Glowstone Harvest XP Minimum", 0).getInt(0);
+		GlowstoneOreHarvestXPMax = config.get(Configuration.CATEGORY_GENERAL, "Glowstone Harvest XP Maximum", 0).getInt(0);
+		GlowstoneOreDropMin = config.get(Configuration.CATEGORY_GENERAL, "Glowstone Harvest DropCount Minimum", 2).getInt(2);
+		GlowstoneOreDropMax = config.get(Configuration.CATEGORY_GENERAL, "Glowstone Harvest DropCount Maximum", 4).getInt(4);
 		
 		ReduceToolRequirements = config.get(Configuration.CATEGORY_GENERAL, "Reduce Tool Requirement for Gathering", true).getBoolean(true);
 

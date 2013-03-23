@@ -26,10 +26,10 @@ public class OreItem extends Item {
 	}
 	
 	@Override
-	public void func_94581_a(IconRegister iconRegister)
+	public void updateIcons(IconRegister iconRegister)
 	{
-		iconIndex = iconRegister.func_94245_a("OresDropMores2:IronOre");
-		icoGoldOre = iconRegister.func_94245_a("OresDropMores2:GoldOre");
+		iconIndex = iconRegister.registerIcon("OresDropMores2:IronOre");
+		icoGoldOre = iconRegister.registerIcon("OresDropMores2:GoldOre");
 	}
 
 	@Override
