@@ -26,16 +26,16 @@ public class OreItem extends Item {
 	}
 	
 	@Override
-	public void updateIcons(IconRegister iconRegister)
+	public void registerIcons(IconRegister iconRegister)
 	{
-		iconIndex = iconRegister.registerIcon("OresDropMores2:IronOre");
+		itemIcon = iconRegister.registerIcon("OresDropMores2:IronOre");
 		icoGoldOre = iconRegister.registerIcon("OresDropMores2:GoldOre");
 	}
 
 	@Override
 	public Icon getIconFromDamage(int par1) {
 		if(par1 == iron)
-			return iconIndex;
+			return itemIcon;
 		else
 			return icoGoldOre;
 	}
