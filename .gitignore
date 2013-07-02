@@ -18,6 +18,7 @@
 *.sh
 *.jar
 *.zip
+*.lzma
 
 /mcp/CHANGELOG
 /mcp/*.bat
