@@ -4,7 +4,8 @@ import net.minecraft.item.Item;
 import bstramke.OresDropMores2.OresDropMores2;
 
 public class OresDropMoresItems {
-
-	public static final Item OreItem = new OreItem(OresDropMores2.OreItemId).setUnlocalizedName("OresDropMoresOreItem");
-
+	public static Item OreItem;
+	public static void Init() {
+		OreItem = new OreItem(OresDropMores2.OreItemId).setUnlocalizedName("OresDropMoresOreItem");
+	}
 }

@@ -14,6 +14,7 @@ import bstramke.OresDropMores2.Items.OresDropMoresItems;
 import cpw.mods.fml.common.DummyModContainer;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.Mod.PostInit;
@@ -83,7 +84,7 @@ public class OresDropMores2 extends DummyModContainer {
 
 	public static boolean ReduceToolRequirements;
 
-	@PreInit
+	@EventHandler
 	public void PreLoad(FMLPreInitializationEvent event) {
 		FMLLog.info("[OresDropMores2] PreLoad");
 		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
@@ -141,15 +142,15 @@ public class OresDropMores2 extends DummyModContainer {
 		ReduceToolRequirements = config.get(Configuration.CATEGORY_GENERAL, "Reduce Tool Requirement for Gathering", true).getBoolean(true);
 
 		config.save();
-	}
-
-	@Init
-	public void load(FMLInitializationEvent event) {
-
-		initRecipes();
 		proxy.registerRenderThings();
 		
 		OresDropMoresBlocks.Init();
+		OresDropMoresItems.Init();
+	}
+
+	@EventHandler
+	public void load(FMLInitializationEvent event) {
+		initRecipes();
 	}
 	
 	private void initRecipes() {
@@ -157,7 +158,7 @@ public class OresDropMores2 extends DummyModContainer {
 		FurnaceRecipes.smelting().addSmelting(OresDropMoresItems.OreItem.itemID, OreItem.gold, new ItemStack(Item.ingotGold), GoldOreSmeltXP);
 	}
 
-	@PostInit
+	@EventHandler
 	public static void postInit(FMLPostInitializationEvent event) {
 		FMLLog.info("[OresDropMores2] postInit");
 	}

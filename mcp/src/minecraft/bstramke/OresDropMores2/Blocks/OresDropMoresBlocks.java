@@ -23,16 +23,16 @@ public class OresDropMoresBlocks {
 		Block.blocksList[129] = null;
 		Block.blocksList[153] = null;
 				
-		Block.blocksList[14] = new ODMOreGoldBlock(14).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreGold");
-		Block.blocksList[15] = new ODMOreIronBlock(15).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreIron");
-		Block.blocksList[16] = new ODMOreCoalBlock(16).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreCoal");
-		Block.blocksList[21] = new ODMOreLapisBlock(21).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreLapis");
-		Block.blocksList[56] = new ODMOreDiamondBlock(56).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreDiamond");
-		Block.blocksList[73] = new ODMOreRedstoneBlock(73, false).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreRedstone").setCreativeTab(CreativeTabs.tabBlock);
-		Block.blocksList[74] = (new ODMOreRedstoneBlock(74, true)).setLightValue(0.625F).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreRedstone");
-		Block.blocksList[89] = (new ODMBlockGlowStone(89, Material.glass)).setHardness(0.3F).setStepSound(Block.soundGlassFootstep).setLightValue(1.0F).setUnlocalizedName("lightgem");
-		Block.blocksList[129] = new ODMOreEmeraldBlock(129).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreEmerald");
-		Block.blocksList[153] = new ODMOreNetherQuartzBlock(153).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("netherquartz");
+		Block.blocksList[14] = new ODMOreGoldBlock(14).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreGold").func_111022_d("gold_ore");
+		Block.blocksList[15] = new ODMOreIronBlock(15).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreIron").func_111022_d("iron_ore");
+		Block.blocksList[16] = new ODMOreCoalBlock(16).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreCoal").func_111022_d("coal_ore");
+		Block.blocksList[21] = new ODMOreLapisBlock(21).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreLapis").func_111022_d("lapis_ore");
+		Block.blocksList[56] = new ODMOreDiamondBlock(56).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreDiamond").func_111022_d("diamond_ore");
+		Block.blocksList[73] = new ODMOreRedstoneBlock(73, false).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreRedstone").setCreativeTab(CreativeTabs.tabBlock).func_111022_d("redstone_ore");
+		Block.blocksList[74] = (new ODMOreRedstoneBlock(74, true)).setLightValue(0.625F).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreRedstone").func_111022_d("redstone_ore");
+		Block.blocksList[89] = (new ODMBlockGlowStone(89, Material.glass)).setHardness(0.3F).setStepSound(Block.soundGlassFootstep).setLightValue(1.0F).setUnlocalizedName("lightgem").func_111022_d("glowstone");
+		Block.blocksList[129] = new ODMOreEmeraldBlock(129).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreEmerald").func_111022_d("emerald_ore");
+		Block.blocksList[153] = new ODMOreNetherQuartzBlock(153).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("netherquartz").func_111022_d("quartz_ore");
 		
 		if (OresDropMores2.ReduceToolRequirements) {
 			MinecraftForge.setBlockHarvestLevel(Block.blocksList[14], "pickaxe", 1);
