@@ -28,8 +28,8 @@ public class OreItem extends Item {
 	@Override
 	public void registerIcons(IconRegister iconRegister)
 	{
-		itemIcon = iconRegister.registerIcon("OresDropMores2:IronOre");
-		icoGoldOre = iconRegister.registerIcon("OresDropMores2:GoldOre");
+		itemIcon = iconRegister.registerIcon("oresdropmores2:IronOre");
+		icoGoldOre = iconRegister.registerIcon("oresdropmores2:GoldOre");
 	}
 
 	@Override

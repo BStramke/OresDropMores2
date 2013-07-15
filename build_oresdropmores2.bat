@@ -9,7 +9,7 @@ rem mkdir reobf\minecraft\bstramke\OresDropMores2Base\bstramke\OresDropMores2\te
 rem mkdir reobf\minecraft\bstramke\OresDropMores2Base\bstramke\OresDropMores2\textures\icons
 
 xcopy reobf\minecraft\forestry reobf\minecraft\bstramke\OresDropMores2Base\forestry\ /S
-xcopy src\minecraft\mods reobf\minecraft\bstramke\OresDropMores2Base\mods\ /S
+xcopy src\minecraft\assets reobf\minecraft\bstramke\OresDropMores2Base\assets\ /S
 
 copy src\minecraft\bstramke\OresDropMores2\mcmod.info reobf\minecraft\bstramke\OresDropMores2Base\mcmod.info
 rem copy src\minecraft\bstramke\OresDropMores2\resources\* reobf\minecraft\bstramke\OresDropMores2Base\bstramke\OresDropMores2\resources
@@ -22,5 +22,5 @@ cd reobf\minecraft\bstramke\OresDropMores2Base
 cd..
 move OresDropMores2Base\mod_OresDropMores2.zip mod_OresDropMores2.zip
 cd D:\GitHub\OresDropMores2
-copy mcp\reobf\minecraft\bstramke\mod_OresDropMores2.zip mod_OresDropMores2.zip
+copy mcp\reobf\minecraft\bstramke\mod_OresDropMores2.zip mod_OresDropMores2.jar
 pause
