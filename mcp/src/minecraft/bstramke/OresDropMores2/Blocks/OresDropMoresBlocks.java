@@ -1,16 +1,16 @@
 package bstramke.OresDropMores2.Blocks;
 
-import cpw.mods.fml.common.Mod.Instance;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockGlowStone;
-import net.minecraft.block.BlockOre;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraftforge.common.MinecraftForge;
 import bstramke.OresDropMores2.OresDropMores2;
 
 
-public class OresDropMoresBlocks {	
+public class OresDropMoresBlocks {
 	public static void Init() {
 		Block.blocksList[14] = null;
 		Block.blocksList[15] = null;
@@ -34,6 +34,26 @@ public class OresDropMoresBlocks {
 		Block.blocksList[129] = new ODMOreEmeraldBlock(129).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreEmerald").func_111022_d("emerald_ore");
 		Block.blocksList[153] = new ODMOreNetherQuartzBlock(153).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("netherquartz").func_111022_d("quartz_ore");
 		
+		
+		try {
+			setFinalStatic(Block.class.getField("oreGold"), Block.blocksList[14]);
+			setFinalStatic(Block.class.getField("oreIron"), Block.blocksList[15]);
+			setFinalStatic(Block.class.getField("oreCoal"), Block.blocksList[16]);
+			setFinalStatic(Block.class.getField("oreLapis"), Block.blocksList[21]);
+			setFinalStatic(Block.class.getField("oreDiamond"), Block.blocksList[56]);
+			setFinalStatic(Block.class.getField("oreRedstone"), Block.blocksList[73]);
+			setFinalStatic(Block.class.getField("oreRedstoneGlowing"), Block.blocksList[74]);
+			setFinalStatic(Block.class.getField("glowStone"), Block.blocksList[89]);
+			setFinalStatic(Block.class.getField("oreEmerald"), Block.blocksList[129]);
+			setFinalStatic(Block.class.getField("oreNetherQuartz"), Block.blocksList[153]);
+		} catch (NoSuchFieldException e) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 		if (OresDropMores2.ReduceToolRequirements) {
 			MinecraftForge.setBlockHarvestLevel(Block.blocksList[14], "pickaxe", 1);
 			MinecraftForge.setBlockHarvestLevel(Block.blocksList[15], "pickaxe", 0);
@@ -42,6 +62,17 @@ public class OresDropMoresBlocks {
 			MinecraftForge.setBlockHarvestLevel(Block.blocksList[73], "pickaxe", 1);
 			MinecraftForge.setBlockHarvestLevel(Block.blocksList[74], "pickaxe", 1);
 			MinecraftForge.setBlockHarvestLevel(Block.obsidian, "pickaxe", 2);
-		}		
+		}
+	}
+	
+	static void setFinalStatic(Field field, Object newValue) throws Exception {
+	    field.setAccessible(true);
+
+	    // remove final modifier from field
+	    Field modifiersField = Field.class.getDeclaredField("modifiers");
+	    modifiersField.setAccessible(true);
+	    modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+
+	    field.set(null, newValue);
 	}
 }
