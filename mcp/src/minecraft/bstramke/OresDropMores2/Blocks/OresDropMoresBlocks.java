@@ -47,6 +47,25 @@ public class OresDropMoresBlocks {
 			setFinalStatic(Block.class.getField("oreEmerald"), Block.blocksList[129]);
 			setFinalStatic(Block.class.getField("oreNetherQuartz"), Block.blocksList[153]);
 		} catch (NoSuchFieldException e) {
+			//e.printStackTrace();
+		} catch (SecurityException e) {
+			//e.printStackTrace();
+		} catch (Exception e) {
+			//e.printStackTrace();
+		}
+		
+		try {
+			setFinalStatic(Block.class.getField("field_71941_G"), Block.blocksList[14]); // Ore Gold
+			setFinalStatic(Block.class.getField("field_71949_H"), Block.blocksList[15]); // Ore Iron
+			setFinalStatic(Block.class.getField("field_71950_I"), Block.blocksList[16]); // Ore Coal
+			setFinalStatic(Block.class.getField("field_71947_N"), Block.blocksList[21]); // Ore Lapis
+			setFinalStatic(Block.class.getField("field_72073_aw"), Block.blocksList[56]); // Ore Diamond
+			setFinalStatic(Block.class.getField("field_72047_aN"), Block.blocksList[73]); // Ore Redstone
+			setFinalStatic(Block.class.getField("field_72048_aO"), Block.blocksList[74]); // Ore Redstone Glowing
+			setFinalStatic(Block.class.getField("field_72014_bd"), Block.blocksList[89]); //glowStone
+			setFinalStatic(Block.class.getField("field_72068_bR"), Block.blocksList[129]); // Ore Emerald
+			setFinalStatic(Block.class.getField("field_94342_cr"), Block.blocksList[153]); // oreNetherQuartz
+		} catch (NoSuchFieldException e) {
 			e.printStackTrace();
 		} catch (SecurityException e) {
 			e.printStackTrace();
