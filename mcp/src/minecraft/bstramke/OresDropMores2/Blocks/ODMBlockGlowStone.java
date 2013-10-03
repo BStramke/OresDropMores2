@@ -3,6 +3,7 @@ package bstramke.OresDropMores2.Blocks;
 import java.util.Random;
 
 import bstramke.OresDropMores2.OresDropMores2;
+import bstramke.OresDropMores2.Items.OresDropMoresItems;
 import net.minecraft.block.BlockGlowStone;
 import net.minecraft.block.material.Material;
 import net.minecraft.util.MathHelper;
@@ -14,11 +15,26 @@ public class ODMBlockGlowStone extends BlockGlowStone {
 		super(par1, par2Material);
 	}
 
+	public int damageDropped(int par1) {
+		if(!OresDropMores2.GlowstoneOreDropFragments)
+			return super.damageDropped(par1);
+		else
+			return 2;
+	}
+	
 	@Override
 	public int quantityDropped(Random par1Random) {
 		return MathHelper.getRandomIntegerInRange(par1Random, OresDropMores2.GlowstoneOreDropMin, OresDropMores2.GlowstoneOreDropMax);
 	}
 
+	@Override
+	public int idDropped(int meta, Random par2Random, int par3) {
+		if(!OresDropMores2.GlowstoneOreDropFragments)
+			return super.idDropped(meta, par2Random, par3);
+		else
+			return OresDropMoresItems.OreFragment.itemID;
+	}
+	
 	@Override
 	public void dropBlockAsItemWithChance(World par1World, int par2, int par3, int par4, int par5, float par6, int par7) {
 		super.dropBlockAsItemWithChance(par1World, par2, par3, par4, par5, par6, par7);

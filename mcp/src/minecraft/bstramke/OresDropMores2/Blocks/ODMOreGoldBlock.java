@@ -22,6 +22,14 @@ public class ODMOreGoldBlock extends ODMBlockOre {
 	public int quantityDropped(Random par1Random) {
 		return MathHelper.getRandomIntegerInRange(par1Random, OresDropMores2.GoldOreDropMin, OresDropMores2.GoldOreDropMax);
 	}
+	
+	@Override
+	public int idDropped(int meta, Random par2Random, int par3) {
+		if(!OresDropMores2.GoldOreDropFragments)
+			return super.idDropped(meta, par2Random, par3);
+		else
+			return OresDropMoresItems.OreFragment.itemID;
+	}
 
 	@Override
 	public void dropBlockAsItemWithChance(World par1World, int par2, int par3, int par4, int par5, float par6, int par7) {
