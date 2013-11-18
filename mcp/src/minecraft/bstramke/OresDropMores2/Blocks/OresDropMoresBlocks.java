@@ -2,38 +2,42 @@ package bstramke.OresDropMores2.Blocks;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.HashMap;
+import java.util.Map.Entry;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraftforge.common.Configuration;
 import net.minecraftforge.common.MinecraftForge;
+import bstramke.OresDropMores2.OreConfigDefaults;
 import bstramke.OresDropMores2.OresDropMores2;
-
+import bstramke.OresDropMores2.OreConfig;
+import bstramke.OresDropMores2.Items.OreFragment;
+import bstramke.OresDropMores2.Items.OreItem;
 
 public class OresDropMoresBlocks {
 	public static void Init() {
-		Block.blocksList[14] = null;
-		Block.blocksList[15] = null;
-		Block.blocksList[16] = null;
-		Block.blocksList[21] = null;
-		Block.blocksList[56] = null;
-		Block.blocksList[73] = null;
-		Block.blocksList[74] = null;
-		Block.blocksList[89] = null;
-		Block.blocksList[129] = null;
-		Block.blocksList[153] = null;
-				
-		Block.blocksList[14] = new ODMOreGoldBlock(14).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreGold").setTextureName("gold_ore");
-		Block.blocksList[15] = new ODMOreIronBlock(15).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreIron").setTextureName("iron_ore");
-		Block.blocksList[16] = new ODMOreCoalBlock(16).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreCoal").setTextureName("coal_ore");
-		Block.blocksList[21] = new ODMOreLapisBlock(21).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreLapis").setTextureName("lapis_ore");
-		Block.blocksList[56] = new ODMOreDiamondBlock(56).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreDiamond").setTextureName("diamond_ore");
-		Block.blocksList[73] = new ODMOreRedstoneBlock(73, false).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreRedstone").setCreativeTab(CreativeTabs.tabBlock).setTextureName("redstone_ore");
-		Block.blocksList[74] = (new ODMOreRedstoneBlock(74, true)).setLightValue(0.625F).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreRedstone").setTextureName("redstone_ore");
-		Block.blocksList[89] = (new ODMBlockGlowStone(89, Material.glass)).setHardness(0.3F).setStepSound(Block.soundGlassFootstep).setLightValue(1.0F).setUnlocalizedName("lightgem").setTextureName("glowstone");
-		Block.blocksList[129] = new ODMOreEmeraldBlock(129).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("oreEmerald").setTextureName("emerald_ore");
-		Block.blocksList[153] = new ODMOreNetherQuartzBlock(153).setHardness(3.0F).setResistance(5.0F).setStepSound(Block.soundStoneFootstep).setUnlocalizedName("netherquartz").setTextureName("quartz_ore");
-		
+		for (Entry<String, OreConfig> entry : OresDropMores2.OreConfiguration.entrySet()) {
+			if (entry.getValue().DoOreOverwrite == false)
+				continue;
+			Block.blocksList[entry.getValue().BlockId] = null;
+
+			if(entry.getValue().BlockId != 73) //redstone...
+				Block.blocksList[entry.getValue().BlockId] = new ODMBlockOreDrop(entry.getValue().BlockId, entry.getValue());
+			else
+			{
+				Block.blocksList[73] = new ODMOreRedstoneBlock(73, false, entry.getValue()).setCreativeTab(CreativeTabs.tabBlock);
+
+				// set the glowing redstone values
+				Block.blocksList[entry.getValue().BlockId + 1] = null;
+				Block.blocksList[74] = new ODMOreRedstoneBlock(74, true, entry.getValue()).setLightValue(0.625F).setResistance(0.3F).setStepSound(entry.getValue().stepSound)
+						.setHardness(entry.getValue().Hardness).setUnlocalizedName(entry.getValue().UnlocalizedName).setTextureName(entry.getValue().TextureName);
+			}
+
+			Block.blocksList[entry.getValue().BlockId].setResistance(entry.getValue().Resistance).setStepSound(entry.getValue().stepSound).setHardness(entry.getValue().Hardness)
+					.setUnlocalizedName(entry.getValue().UnlocalizedName).setTextureName(entry.getValue().TextureName);
+		}
 		
 		try {
 			setFinalStatic(Block.class.getField("oreGold"), Block.blocksList[14]);
@@ -47,13 +51,13 @@ public class OresDropMoresBlocks {
 			setFinalStatic(Block.class.getField("oreEmerald"), Block.blocksList[129]);
 			setFinalStatic(Block.class.getField("oreNetherQuartz"), Block.blocksList[153]);
 		} catch (NoSuchFieldException e) {
-			//e.printStackTrace();
+			// e.printStackTrace();
 		} catch (SecurityException e) {
-			//e.printStackTrace();
+			// e.printStackTrace();
 		} catch (Exception e) {
-			//e.printStackTrace();
+			// e.printStackTrace();
 		}
-		
+
 		try {
 			setFinalStatic(Block.class.getField("field_71941_G"), Block.blocksList[14]); // Ore Gold
 			setFinalStatic(Block.class.getField("field_71949_H"), Block.blocksList[15]); // Ore Iron
@@ -62,7 +66,7 @@ public class OresDropMoresBlocks {
 			setFinalStatic(Block.class.getField("field_72073_aw"), Block.blocksList[56]); // Ore Diamond
 			setFinalStatic(Block.class.getField("field_72047_aN"), Block.blocksList[73]); // Ore Redstone
 			setFinalStatic(Block.class.getField("field_72048_aO"), Block.blocksList[74]); // Ore Redstone Glowing
-			setFinalStatic(Block.class.getField("field_72014_bd"), Block.blocksList[89]); //glowStone
+			setFinalStatic(Block.class.getField("field_72014_bd"), Block.blocksList[89]); // glowStone
 			setFinalStatic(Block.class.getField("field_72068_bR"), Block.blocksList[129]); // Ore Emerald
 			setFinalStatic(Block.class.getField("field_94342_cr"), Block.blocksList[153]); // oreNetherQuartz
 		} catch (NoSuchFieldException e) {
@@ -72,7 +76,7 @@ public class OresDropMoresBlocks {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		if (OresDropMores2.ReduceToolRequirements) {
 			MinecraftForge.setBlockHarvestLevel(Block.blocksList[14], "pickaxe", 1);
 			MinecraftForge.setBlockHarvestLevel(Block.blocksList[15], "pickaxe", 0);
@@ -83,15 +87,15 @@ public class OresDropMoresBlocks {
 			MinecraftForge.setBlockHarvestLevel(Block.obsidian, "pickaxe", 2);
 		}
 	}
-	
+
 	static void setFinalStatic(Field field, Object newValue) throws Exception {
-	    field.setAccessible(true);
+		field.setAccessible(true);
 
-	    // remove final modifier from field
-	    Field modifiersField = Field.class.getDeclaredField("modifiers");
-	    modifiersField.setAccessible(true);
-	    modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+		// remove final modifier from field
+		Field modifiersField = Field.class.getDeclaredField("modifiers");
+		modifiersField.setAccessible(true);
+		modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
 
-	    field.set(null, newValue);
+		field.set(null, newValue);
 	}
 }

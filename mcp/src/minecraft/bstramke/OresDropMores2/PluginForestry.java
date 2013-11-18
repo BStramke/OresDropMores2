@@ -1,7 +1,9 @@
 package bstramke.OresDropMores2;
 
 import java.util.Random;
+import java.util.Map.Entry;
 
+import net.minecraft.block.Block;
 import net.minecraft.command.ICommand;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
@@ -89,5 +91,10 @@ public class PluginForestry implements IPlugin {
 	private static void addBackpackItems() {
 		BackpackManager.backpackItems[MINER].add(new ItemStack(OresDropMoresItems.OreItem, 1, OreItem.iron));
 		BackpackManager.backpackItems[MINER].add(new ItemStack(OresDropMoresItems.OreItem, 1, OreItem.gold));
+		
+		
+		for (Entry<String, OreConfig> entry : OresDropMores2.OreConfiguration.entrySet()) {
+			BackpackManager.backpackItems[MINER].add(new ItemStack(OresDropMoresItems.OreFragment, 1, entry.getValue().FragmentMeta));
+		}
 	}
 }

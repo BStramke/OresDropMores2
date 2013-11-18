@@ -11,6 +11,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Icon;
 
 public class OreFragment extends Item {
+	//Metadata Values
+	public static int Iron = 0;
+	public static int Gold = 1;
+	public static int Glowstone = 2;
+	public static int Coal = 3;
+	public static int Diamond = 4;
+	public static int Emerald = 5;
+	public static int Lapis = 6;
+	public static int NetherQuartz = 7;
+	public static int Redstone = 8;
+	
 	Icon itemIconGold;
 	Icon itemIconGlowstone;
 	Icon itemIconCoal;
@@ -55,7 +66,7 @@ public class OreFragment extends Item {
 		itemIconRedstone = iconRegister
 				.registerIcon("oresdropmores2:fragmentRedstoneOre");
 	}
-
+	
 	@Override
 	public Icon getIconFromDamage(int par1) {
 		switch (par1) {
