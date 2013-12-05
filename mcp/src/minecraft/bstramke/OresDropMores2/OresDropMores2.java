@@ -35,7 +35,7 @@ import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
 
-@Mod(name = "OresDropMores2", version = "0.10", modid = "OresDropMores2")
+@Mod(name = "OresDropMores2", version = "0.11.1", modid = "OresDropMores2")
 @NetworkMod(clientSideRequired = true, serverSideRequired = false)
 public class OresDropMores2 extends DummyModContainer {
 	@Instance

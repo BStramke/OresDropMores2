@@ -3,6 +3,7 @@ package bstramke.OresDropMores2.Blocks;
 import java.util.Random;
 
 import bstramke.OresDropMores2.OreConfig;
+import bstramke.OresDropMores2.Items.OreItem;
 import bstramke.OresDropMores2.Items.OresDropMoresItems;
 
 import net.minecraft.block.BlockOre;
@@ -22,7 +23,14 @@ public class ODMBlockOreDrop extends BlockOre {
 		if(conf.DoOreDropFragments)
 			return conf.FragmentMeta;
 		else
-			return super.damageDropped(par1);
+		{
+			if(blockID == 14)
+				return OreItem.gold;
+			else if(blockID == 15)
+				return OreItem.iron;
+			else
+				return super.damageDropped(par1);
+		}
 	}
 	
 	public ODMBlockOreDrop(int par1) {
